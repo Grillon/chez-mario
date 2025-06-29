@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chez Mario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500&family=Lora:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Noto Sans', system-ui, sans-serif;
+      background: #f9f9f6;
+      color: #2c2c2c;
+      line-height: 1.6;
+    }
+    
+    .title-section {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: #f9f9f6;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .title-section h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      margin: 0;
+      color: #3A5A40;
+      text-shadow: 0 2px 4px #3A5A4020;
+      position: relative;
+      z-index: 1;
+      
+    }
+    
+    .hero {
+      background: url('https://imgs.search.brave.com/BQtHmhtxfitfZHCa95dV4oqYnXgRVAa2HVSbnB11vdc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hZG1p/bi5wZXBlc3Bpenpl/cmlhLmNvbS9tZWRp/YS8yNTQ5') center/cover no-repeat;
+      height: 70vh;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(58, 90, 64, 0.05) 0%, rgba(138, 154, 141, 0.03) 50%, rgba(74, 103, 65, 0.05) 100%);
+      pointer-events: none;
+    }
+    
+    .tagline {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #4a6741;
+      margin: 2rem auto;
+      max-width: 700px;
+      padding: 2rem 1rem;
+      background: rgba(249, 249, 246, 0.95);
+      border-radius: 15px;
+      border: 2px solid #8a9a8d40;
+      box-shadow: 0 4px 15px #3A5A4020;
+      backdrop-filter: blur(10px);
+      
+    }
+    
+    .gallery-section {
+      background: #f9f9f6;
+      padding: 4rem 2rem;
+      margin: 3rem 0;
+      position: relative;
+    }
+    
+    .gallery-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #8a9a8d, transparent);
+    }
+    
+    .gallery-section::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #8a9a8d, transparent);
+    }
+    
+    .gallery-title {
+      font-family: 'Lora', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      text-align: center;
+      color: #3A5A40;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 4px #3A5A4020;
+    }
+    
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .gallery img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px #3A5A4030;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 3px solid #8a9a8d40;
+      
+    }
+    
+    .gallery img:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 35px #3A5A4040;
+    }
+    
+    .info {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: rgba(255, 255, 255, 0.7);
+      margin: 2rem 0;
+      border-radius: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px solid #8a9a8d30;
+    }
+    
+    .info-title {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #3A5A40;
+      margin-bottom: 2rem;
+      text-shadow: 0 2px 4px #3A5A4020;
+    }
+    
+    .info p {
+      margin: 15px 0;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: #2c2c2c;
+    }
+    
+    .info strong {
+      color: #3A5A40;
+      font-weight: 600;
+    }
+    
+    .map-container {
+      margin: 2.5rem auto;
+      max-width: 700px;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 350px;
+      border: 0;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px #3A5A4030;
+      border: 3px solid #8a9a8d50;
+    }
+    
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      padding: 0 1rem;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-family: 'Noto Sans', system-ui, sans-serif;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      
+    }
+    
+    .social-link:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+    
+    .social-facebook { 
+      background: linear-gradient(135deg, #1877F2, #0d5dbf);
+    }
+    .social-instagram { 
+      background: linear-gradient(135deg, #F56040, #E1306C, #C13584, #833AB4);
+    }
+    .social-x { 
+      background: linear-gradient(135deg, #000000, #333333);
+    }
+    .social-youtube { 
+      background: linear-gradient(135deg, #FF0000, #cc0000);
+    }
+    .social-linkedin { 
+      background: linear-gradient(135deg, #0A66C2, #084d94);
+    }
+    .social-site-web { 
+      background: linear-gradient(135deg, #10B981, #059669);
+    }
+    
+    .social-icon {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+    }
+    
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: #f5f5f2;
+      color: #3A5A40;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #8a9a8d, #3A5A40, #8a9a8d);
+    }
+    
+    .footer-content p {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    
+          /* Style minimaliste japonais */
+          body {
+            font-weight: 300;
+            letter-spacing: 0.3px;
+          }
+          
+          .title-section {
+            padding: 4rem 2rem 3rem !important;
+            background: #f9f9f6 !important;
+            position: relative;
+          }
+          
+          .title-section h1 {
+            font-weight: 400 !important;
+            text-shadow: none !important;
+            letter-spacing: 1px !important;
+            margin-bottom: 0 !important;
+          }
+          
+          .hero {
+            height: 60vh !important;
+            border-radius: 0 !important;
+          }
+          
+          .tagline {
+            background: rgba(249, 249, 246, 0.95) !important;
+            border: 1px solid rgba(58, 90, 64, 0.15) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            font-weight: 300 !important;
+            padding: 3rem 2rem !important;
+            margin: 4rem auto !important;
+            max-width: 600px !important;
+          }
+          
+          .gallery-section {
+            background: #f9f9f6 !important;
+            padding: 5rem 3rem !important;
+            margin: 0 !important;
+          }
+          
+          .gallery-section::before,
+          .gallery-section::after {
+            display: none !important;
+          }
+          
+          .gallery-title {
+            font-weight: 400 !important;
+            text-shadow: none !important;
+            margin-bottom: 3rem !important;
+            letter-spacing: 0.5px !important;
+          }
+          
+          .gallery {
+            gap: 3rem !important;
+            max-width: 1000px !important;
+          }
+          
+          .gallery img {
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+            transition: opacity 0.3s ease !important;
+          }
+          
+          .gallery img:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            opacity: 0.8 !important;
+          }
+          
+          .info {
+            background: rgba(255, 255, 255, 0.7) !important;
+            border: 1px solid rgba(58, 90, 64, 0.1) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            padding: 4rem 3rem !important;
+            margin: 4rem auto !important;
+            max-width: 700px !important;
+          }
+          
+          .info-title {
+            font-weight: 400 !important;
+            text-shadow: none !important;
+            margin-bottom: 3rem !important;
+            letter-spacing: 0.5px !important;
+          }
+          
+          .info p {
+            font-weight: 300 !important;
+            line-height: 1.8 !important;
+            margin: 2rem 0 !important;
+          }
+          
+          .info strong {
+            font-weight: 400 !important;
+          }
+          
+          .map-container iframe {
+            border-radius: 0 !important;
+            border: 1px solid rgba(58, 90, 64, 0.2) !important;
+            box-shadow: none !important;
+          }
+          
+          .socials {
+            gap: 2rem !important;
+            margin-bottom: 3rem !important;
+          }
+          
+          .social-link {
+            border-radius: 0 !important;
+            font-weight: 400 !important;
+            box-shadow: none !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
+            padding: 1rem 2rem !important;
+            text-transform: none !important;
+            letter-spacing: 0.3px !important;
+          }
+          
+          .social-link:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            opacity: 0.8 !important;
+          }
+          
+          footer {
+            background: #f5f5f2 !important;
+            padding: 4rem 2rem !important;
+            margin-top: 0 !important;
+          }
+          
+          footer::before {
+            display: none !important;
+          }
+          
+          .footer-content p {
+            font-weight: 300 !important;
+            text-shadow: none !important;
+            color: #3A5A40 !important;
+            letter-spacing: 0.3px !important;
+          }
+          
+          /* Responsive pour le style zen */
+          @media (max-width: 768px) {
+            .title-section {
+              padding: 3rem 1.5rem 2rem !important;
+            }
+            
+            .gallery-section {
+              padding: 4rem 1.5rem !important;
+            }
+            
+            .info {
+              padding: 3rem 2rem !important;
+              margin: 3rem 1rem !important;
+            }
+            
+            .tagline {
+              padding: 2.5rem 1.5rem !important;
+              margin: 3rem 1rem !important;
+            }
+          }
+        
+    
+    /* CSS personnalisé généré par IA */
+    
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .title-section {
+        padding: 2rem 1rem;
+      }
+      
+      .hero {
+        height: 50vh;
+      }
+      
+      .tagline {
+        font-size: 1.1rem;
+        margin: 1.5rem auto;
+        padding: 1.5rem 1rem;
+      }
+      
+      .gallery-section {
+        padding: 3rem 1rem;
+      }
+      
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+      }
+      
+      .gallery img {
+        height: 180px;
+      }
+      
+      .info {
+        padding: 2rem 1rem;
+        margin: 1.5rem 1rem;
+      }
+      
+      .social-link {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+      
+      .socials {
+        gap: 10px;
+        margin-bottom: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="title-section">
+    <h1>Chez Mario</h1>
+  </div>
+
+  <header class="hero"></header>
+
+  <div class="tagline">
+    <p>Une cuisine napolitaine de renom</p>
+  </div>
+
+  <section class="gallery-section">
+    <h2 class="gallery-title">Notre Galerie</h2>
+    <div class="gallery">
+            <img src="https://media.gettyimages.com/id/1414575281/fr/photo/une-d%C3%A9licieuse-et-savoureuse-pizza-italienne-margherita-aux-tomates-et-mozzarella-de-buffle.jpg?s=612x612&w=0&k=20&c=2hIPM6DtgGxwdBE2PriE7m02AXoOqKHy6K35U8r6TEw=" alt="photo">
+      <img src="https://imgs.search.brave.com/6E9t7_IQpoOEXs8aNe2zNU87GJq2A8qH65XYwqtoMac/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9k/L2Q3L1BpenphX2Jh/a2luZ19pbl9Xb29k/LWZpcmVkX292ZW4u/anBn" alt="photo">
+      <img src="https://media.gettyimages.com/id/1463862256/fr/photo/pizza-chef-with-freshly-baked-pizza.jpg?s=612x612&w=0&k=20&c=wEnglWJyhy6sY_Dt83oDux6W0neWNKlMGvSefNP2OME=" alt="photo">
+    </div>
+  </section>
+
+  <section class="info">
+    <h2 class="info-title">Informations Pratiques</h2>
+    <p><strong>Adresse :</strong> 3 Boulevard de la Liberté 34500 Béziers</p>
+    
+        <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2901.665239315031!2d3.2192040765481864!3d43.34219367248982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b10e609fc92b17%3A0xe16191342f6562aa!2s7%20Bd%20de%20la%20Libert%C3%A9%2C%2034500%20B%C3%A9ziers!5e0!3m2!1sfr!2sfr!4v1751211939909!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    
+    <p><strong>Téléphone :</strong> 0708091011</p>
+    <p><strong>Horaires :</strong><br>Lundi au vendredi de 18h à 23h30<br>Fermé le week-end</p>
+  </section>
+
+  <footer>
+    <div class="socials">
+            <a href="https://x.com/grillon_" target="_blank" class="social-link social-x--twitter-">
+        <svg class="social-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        X (Twitter)
+      </a>
+    </div>
+    
+    <div class="footer-content">
+      <p>Page générée avec ❤️ par <strong>EasyLandingWeb</strong></p>
+    </div>
+  </footer>
+</body>
+</html>
